@@ -59,6 +59,7 @@ class Budget:
         print(f"you have chosen to withdraw from the {selected_category} category")
         withdrawalAmount = int(input(f"how much will you like to withdraw from the {selected_category} category? "))
         #comparing withdrawal amount with available balance
+        
         if withdrawalAmount >= self.categories_balance[selected_index]:
             print("You have insufficient balance!!!")
             self.try_again()
@@ -70,13 +71,15 @@ class Budget:
 
     def get_balance(self):
         for category in self.categories:
-            print(self.categories.index(category)+1, category)   
+            print(self.categories.index(category)+1, category)  
+            
         select_category = (int(input("Select category to check balance of, enter 1--3 respectively for each category: ")))
         selected_index = select_category - 1
         selected_category = self.categories[selected_index]
         for category in self.categories_balance:
             balance = self.categories_balance[selected_index]
         print(f"{selected_category} balance: N{balance}")
+        
         isValid = False
         while isValid == False:
             another_balance = int(input("Do you want to check another category balance? Input 1 for (yes) or 2 for (no)\n"))
