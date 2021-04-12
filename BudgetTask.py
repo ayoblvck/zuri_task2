@@ -1,4 +1,5 @@
 print("\n\n***Welcome to MyBudgetApp***\n")
+print("You have been gifted a sum of N1000 in each of your categories for downloading my budget app!!!\n")
 
 
 class Budget:
@@ -35,7 +36,7 @@ class Budget:
         for category in self.categories:
             print(self.categories.index(category) + 1, category)
 
-        select_category = (int(input("Select category to deposit to: ")))
+        select_category = (int(input("Select category to deposit to, enter 1--3 respectively for each category : ")))
         selected_index = select_category - 1 #subtracts 1 from selected category s/n to get the actual index
         
         selected_category = self.categories[selected_index]
@@ -52,7 +53,7 @@ class Budget:
         for category in self.categories:
             print(self.categories.index(category)+1, category)
 
-        select_category = (int(input("Select category to withdraw from, enter 1--4 respectively for each category: ")))
+        select_category = (int(input("Select category to withdraw from, enter 1--3 respectively for each category: ")))
         selected_index = select_category - 1
         selected_category = self.categories[selected_index]
         print(f"you have chosen to withdraw from the {selected_category} category")
@@ -70,20 +71,31 @@ class Budget:
     def get_balance(self):
         for category in self.categories:
             print(self.categories.index(category)+1, category)   
-        select_category = (int(input("Select category to check balance of, enter 1--4 respectively for each category: ")))
+        select_category = (int(input("Select category to check balance of, enter 1--3 respectively for each category: ")))
         selected_index = select_category - 1
         selected_category = self.categories[selected_index]
         for category in self.categories_balance:
             balance = self.categories_balance[selected_index]
         print(f"{selected_category} balance: N{balance}")
-        self.try_again()
+        isValid = False
+        while isValid == False:
+            another_balance = int(input("Do you want to check another category balance? Input 1 for (yes) or 2 for (no)\n"))
+            if another_balance == 1:
+                self.get_balance()
+                isValid = True
+            elif another_balance == 2:
+                self.try_again()
+                isValid = True
+            else:
+                print("invalid selection")
+
 
 
     def transfer(self):
         print("\nThese are the available categories: ")
         for category in self.categories:
             print(self.categories.index(category)+1, category)
-
+        print("Note: Enter 1--3 respectively for each category")
         transfer_from = int(input("\nWhat category would you like to transfer from: "))
         transfer_to = int(input("What category would you like to transfer to: "))
 
@@ -118,6 +130,9 @@ class Budget:
         elif try_again == 2:
             print("Thank you and have a nice day!!!")
             exit()
+        else:
+            print("invalid selection, try again!")
+            self.try_again()
         
 
 Budget().init_action()
