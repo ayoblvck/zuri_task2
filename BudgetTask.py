@@ -7,7 +7,8 @@ class Budget:
         self.categories = categories
         self.categories_balance = categories_balance
 
-    # Begining of user experience with app: operations:deposit, withdraw, check balance and transfer
+    # Begining of user experience with app: 
+    # operations:deposit, withdraw, check balance and transfer
     def init_action(self):
         print("These are the operations available on this app\n  1. Deposit to a category\n  2. Withdraw from a category\n  3. Check category Balance\n  4. Transfer between categories")
         while True:
